@@ -1,16 +1,15 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "27.0.2"
+    compileSdkVersion androidVersion
+    buildToolsVersion androidSupportVersion
     defaultConfig {
         applicationId "com.methodsignature.daggerandroidkotlin"
-        minSdkVersion 15
-        targetSdkVersion 26
+        minSdkVersion androidMinVersion
+        targetSdkVersion androidVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,12 +22,26 @@ android {
     }
 }
 
+ext.jUnitVersion = "4.12"
+ext.espressoVersion = "3.0.1"
+ext.daggerVersion = "2.14.1"
+ext.rxJavaVersion = "2.1.7"
+ext.rxAndroidVersion = "2.0.1"
+ext.rxKotlinVersion = "2.2.0"
+ext.constraintLayoutVersion = "1.0.2"
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    implementation "com.android.support:appcompat-v7:$androidSupportVersion"
+    testImplementation "junit:junit:$jUnitVersion"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 }
