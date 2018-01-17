@@ -9,7 +9,7 @@ import com.methodsignature.daggerandroidkotlin.android.mvp.view.MessageView
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-class ListedTodoActivity : AppCompatActivity() {
+class MessageActivity : AppCompatActivity() {
 
     lateinit var mvpMessageView: MessageView
 

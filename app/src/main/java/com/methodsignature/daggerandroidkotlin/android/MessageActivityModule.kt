@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class ListedTodosActivityModule {
+class MessageActivityModule {
 
     @Provides
     fun provideMessagePresenter(view: MessageView, repo: MessageRepository): MessagePresenter {
@@ -16,8 +16,8 @@ class ListedTodosActivityModule {
     }
 
     @Provides
-    @ListedTodoActivity.MvpMessageView
-    fun provideMessageView(activity: ListedTodoActivity): MessageView {
+    @MessageActivity.MvpMessageView
+    fun provideMessageView(activity: MessageActivity): MessageView {
         return activity.getMessageView()
     }
 }
