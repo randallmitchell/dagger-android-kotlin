@@ -23,9 +23,9 @@ class MessageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.listed_todo_activity_layout)
+        setContentView(R.layout.message_activity_layout)
 
-        val messageView: View = findViewById(R.id.listed_todo_activity_message_view)
+        val messageView: View = findViewById(R.id.message_activity_message_view)
         if (messageView is MessageView) {
             mvpMessageView = messageView
         }

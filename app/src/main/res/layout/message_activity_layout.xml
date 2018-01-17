@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <com.methodsignature.daggerandroidkotlin.android.mvp.view.DefaultMessageView
-        android:id="@+id/listed_todo_activity_message_view"
+        android:id="@+id/message_activity_message_view"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
