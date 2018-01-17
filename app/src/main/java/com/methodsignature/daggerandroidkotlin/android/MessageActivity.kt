@@ -11,35 +11,27 @@ import javax.inject.Inject
 
 class MessageActivity : AppCompatActivity() {
 
-    lateinit var mvpMessageView: MessageView
+    lateinit var messageView: MessageView
 
     @Inject
-    lateinit var mvpMessagePresenter: MessagePresenter
-
-    @Target(AnnotationTarget.FUNCTION)
-    @Retention(AnnotationRetention.RUNTIME)
-    @MustBeDocumented
-    annotation class MvpMessageView
+    lateinit var messagePresenter: MessagePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.message_activity_layout)
 
         val messageView: View = findViewById(R.id.message_activity_message_view)
-        if (messageView is MessageView) {
-            mvpMessageView = messageView
+
+        when (messageView) {
+            is MessageView -> this.messageView = messageView
+            else -> throw IllegalStateException("Message view must exist within layout.")
         }
 
         AndroidInjection.inject(this)
     }
 
-    @MvpMessageView
-    fun getMessageView(): MessageView {
-        return mvpMessageView
-    }
-
     override fun onStart() {
         super.onStart()
-        mvpMessagePresenter.startPresenting()
+        messagePresenter.startPresenting()
     }
 }

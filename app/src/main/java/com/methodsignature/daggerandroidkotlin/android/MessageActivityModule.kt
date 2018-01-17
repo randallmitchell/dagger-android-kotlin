@@ -16,8 +16,7 @@ class MessageActivityModule {
     }
 
     @Provides
-    @MessageActivity.MvpMessageView
     fun provideMessageView(activity: MessageActivity): MessageView {
-        return activity.getMessageView()
+        return activity.messageView
     }
 }

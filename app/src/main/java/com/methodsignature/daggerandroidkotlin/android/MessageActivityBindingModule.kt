@@ -8,7 +8,7 @@ import dagger.android.AndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module(subcomponents = [MessageActivitySubcomponent::class])
-abstract class MessageActivityBindingModule(val activity: MessageActivity) {
+abstract class MessageActivityBindingModule {
 
     @Binds
     @IntoMap
